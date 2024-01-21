@@ -28,6 +28,7 @@ export const fullTrim = (text) => (text || "").replace(/\s/g, "");
  * @example getTotal([{ price: 10, quantity: 10 }], 10) // 90
  * @example getTotal([{ price: 10, quantity: 10 }], 100) // 0
  */
+
 export const getTotal = (items = [], discount = 0) => {
   if (typeof discount !== "number") {
     throw new Error("Скидка должна быть числом");
@@ -40,3 +41,5 @@ export const getTotal = (items = [], discount = 0) => {
   }, 0);
   return total - (total * discount) / 100;
 };
+
+console.log(getTotal([{ price: 50, quantity: 1 }], 110));

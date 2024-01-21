@@ -85,10 +85,21 @@ describe("fullTrim function", () => {
 // 3) ФУНКЦИЯ ДЛЯ ПОДСЧЕТА СУММЫ ЗАКАЗА
 
 describe("getTotal function", () => {
-  describe("positive cases", () => {
-    test("case 1", () => {
+  describe("Positive cases", () => {
+    test("100% dscount", () => {
       const result = getTotal([{ price: 50, quantity: 1 }], 0);
       expect(result).toBe(50);
+    });
+  });
+  describe("Negative cases cases", () => {
+    test("Discount should not be negative", () => {
+      expect(() => getTotal([{ price: 50, quantity: 1 }], -1)).toThrow("Процент скидки не может быть отрицательным");
+    });
+    test("Discount should be a number", () => {
+      expect(() => getTotal([{ price: 50, quantity: 1 }], "50")).toThrow("Скидка должна быть числом");
+    });
+    test("Discount should not exceed 100", () => {
+      expect(() => getTotal([{ price: 50, quantity: 1 }], 101)).toThrow();
     });
   });
 });
