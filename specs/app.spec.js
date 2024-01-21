@@ -86,9 +86,24 @@ describe("fullTrim function", () => {
 
 describe("getTotal function", () => {
   describe("Positive cases", () => {
-    test("100% dscount", () => {
+    test("100% dscount should result in 0", () => {
       const result = getTotal([{ price: 50, quantity: 1 }], 0);
       expect(result).toBe(50);
+    });
+    describe("Checking calculation of amount without zero discount", () => {
+      test("Case 1: one item in the basket", () => {
+        const result = getTotal([{ price: 10, quantity: 10 }], 0);
+        expect(result).toBe(100);
+      });
+      test("Case 2: more then one items in the basket", () => {
+        const result = getTotal([{ price: 10, quantity: 1 }, { price: 10, quantity: 9 }], 0);
+        expect(result).toBe(100);
+      });
+    });
+
+    test("Checking calculation of amount with discount", () => {
+      const result = getTotal([{ price: 10, quantity: 10 }], 10);
+      expect(result).toBe(90);
     });
   });
   describe("Negative cases cases", () => {
