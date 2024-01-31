@@ -10,7 +10,14 @@ module.exports = {
     "plugin:jest/recommended",
     "plugin:prettier/recommended",
   ],
-  overrides: [],
+  overrides: [
+    // {
+    //   "files": ["test/**"],
+    //   "plugins": ["jest"],
+    //   "extends": ["plugin:jest/recommended"],
+    //   "rules": { "jest/prefer-expect-assertions": "off" }
+    // },
+  ],
   parserOptions: {
     ecmaVersion: "latest",
     sourceType: "module",
