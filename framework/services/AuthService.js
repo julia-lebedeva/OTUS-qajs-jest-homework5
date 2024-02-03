@@ -2,7 +2,7 @@
 import config from "../config";
 // import userData from "../fixtures/userFixture.js";
 
-export const authorized = async (login, password) => {
+export const authoriseUser = async (login, password) => {
   const response = await fetch(`${config.baseURL}/Account/v1/Authorized`, {
     method: "post",
     headers: { "Content-Type": "application/json" },
