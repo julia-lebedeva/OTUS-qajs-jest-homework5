@@ -1,6 +1,7 @@
 import { faker } from "@faker-js/faker";
+// const { faker } = require("@faker-js/faker");
 
-export function generateUserCredentials() {
+const createUserData = () => {
   return {
     login: faker.word.sample(),
     password: faker.internet.password({
@@ -10,4 +11,9 @@ export function generateUserCredentials() {
       prefix: "a0$",
     }),
   };
-}
+};
+
+// create user with userData
+
+export const userData = createUser();
+// вернуть userName, password, userID
