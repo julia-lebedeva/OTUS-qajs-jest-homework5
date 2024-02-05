@@ -5,6 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "jest --setupFiles dotenv/config --verbose",
+    "start": "babel-node src/main.js",
     "lint": "eslint . --ignore-path .gitignore --cache",
     "lint:fix": "npm run lint -- --fix"
   },
