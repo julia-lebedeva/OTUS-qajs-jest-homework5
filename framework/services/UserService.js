@@ -1,21 +1,41 @@
-// get user info, delete user
-import config from "../config";
-// import userData from "../fixtures/userFixture.js";
+// MANAGE USER: GET INFORMATION AND DELETE
+import { config } from "../config/config.js";
 
-export const getUserInfo = async (userID) => {
-  const response = await fetch(`${config.baseURL}/Account/v1/User/${userID}`, {
-    method: "get",
+export const createUser = async ({ login, password }) => {
+  const response = await fetch("https://bookstore.demoqa.com/Account/v1/User", {
+    method: "post",
+    body: JSON.stringify({
+      userName: login,
+      password: password,
+    }),
     headers: { "Content-Type": "application/json" },
   });
-
-  return response;
+  return {
+    headers: response.headers,
+    status: response.status,
+    body: await response.json(),
+  };
 };
 
-export const deleteUser = async (userID) => {
-  const response = await fetch(`${config.baseURL}/Account/v1/User/${userID}`, {
-    method: "delete",
-    headers: { "Content-Type": "application/json" },
+export const getUserInfo = async (userId, token) => {
+  const response = await fetch(`${config.baseURL}/Account/v1/User/${userId}`, {
+    method: "get",
+    headers: { Authorization: `Bearer ${token}` },
   });
-
-  return response;
+  return {
+    headers: response.headers,
+    status: response.status,
+    body: await response.json(),
+  };
+};
+export const deleteUser = async ({ userId, token }) => {
+  const response = await fetch(`${config.baseURL}/Account/v1/User/${userId}`, {
+    method: "delete",
+    headers: { Authorization: `Bearer ${token}` },
+  });
+  return {
+    headers: response.headers,
+    status: response.status,
+    body: await response.json(),
+  };
 };

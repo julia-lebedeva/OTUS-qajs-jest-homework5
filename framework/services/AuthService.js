@@ -1,8 +1,7 @@
-// authorise user, generate token
-import config from "../config";
-// import userData from "../fixtures/userFixture.js";
+// GERERATE JWT, CHECK AUTHORISATION
+import { config } from "../config/config.js";
 
-export const authoriseUser = async (login, password) => {
+export const authoriseUser = async ({ login, password }) => {
   const response = await fetch(`${config.baseURL}/Account/v1/Authorized`, {
     method: "post",
     headers: { "Content-Type": "application/json" },
@@ -13,14 +12,13 @@ export const authoriseUser = async (login, password) => {
   });
 
   return {
-    // headers: response.headers,
-    // status: response.status,
-    // data: await response.json(),
-    response,
+    headers: response.headers,
+    status: response.status,
+    body: await response.json(),
   };
 };
 
-export const generateToken = async (login, password) => {
+export const generateToken = async ({ login, password }) => {
   const response = await fetch(`${config.baseURL}/Account/v1/GenerateToken`, {
     method: "POST",
     headers: { "Content-Type": "application/json" },
@@ -29,5 +27,9 @@ export const generateToken = async (login, password) => {
       password: password,
     }),
   });
-  return response;
+  return {
+    headers: response.headers,
+    status: response.status,
+    body: await response.json(),
+  };
 };

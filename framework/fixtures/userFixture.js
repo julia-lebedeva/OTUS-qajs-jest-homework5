@@ -1,9 +1,8 @@
+// GENERATE CREDENTIALS FOR A NEW USER
 import { faker } from "@faker-js/faker";
 // const { faker } = require("@faker-js/faker");
 
-// создать тестовых юзеров и вернуть их данные
-
-const createUserData = () => {
+export function generateUserCredentials() {
   return {
     login: faker.word.sample(),
     password: faker.internet.password({
@@ -13,9 +12,4 @@ const createUserData = () => {
       prefix: "a0$",
     }),
   };
-};
-
-// create user with userData
-
-export const userData = createUser();
-// вернуть userName, password, userID
+}
