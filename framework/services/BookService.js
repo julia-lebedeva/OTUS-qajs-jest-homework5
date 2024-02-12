@@ -7,7 +7,7 @@ import { config } from "../config/config.js";
 import supertest from "supertest";
 
 export const getAllBooks = async () => {
-  const response = await supertest(config.baseURL).get('/BookStore/v1/Books');
+  const response = await supertest(config.baseURL).get("/BookStore/v1/Books");
   return {
     headers: response.headers,
     status: response.status,
@@ -16,7 +16,9 @@ export const getAllBooks = async () => {
 };
 
 export const getBook = async (isbn) => {
-  const response = await supertest(config.baseURL).get( `/BookStore/v1/Book?ISBN=${isbn}`);
+  const response = await supertest(config.baseURL).get(
+    `/BookStore/v1/Book?ISBN=${isbn}`,
+  );
   return {
     headers: response.headers,
     status: response.status,
