@@ -107,7 +107,9 @@ const config = {
   // projects: undefined,
 
   // Use this configuration option to add custom reporters to Jest
-  // reporters: undefined,
+  // reporters: ["default", "jest-allure"],
+  // testRunner: "jest-jasmine2",
+  // setupFilesAfterEnv: ["jest-allure/dist/setup"],
 
   // Automatically reset mock state before every test
   // resetMocks: false,
@@ -196,3 +198,9 @@ const config = {
 };
 
 module.exports = config;
+
+// export default {
+//   reporters: ["default", "jest-allure"],
+//   testRunner: "jest-jasmine2",
+//   setupFilesAfterEnv: ["jest-allure/dist/setup"],
+// };
