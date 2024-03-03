@@ -4,3 +4,4 @@ coverage
 .eslintcache
 stashed.js
 .env
+jest_html_reporters.html
