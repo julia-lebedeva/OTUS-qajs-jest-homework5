@@ -57,6 +57,6 @@ jobs:
     steps: 
       - run: |
           curl --request POST \
-            --url https://api.telegram.org/bot${{secrets.TEST_TELEGRAM_TOKEN}}/sendMessage \ 
+            --location 'https://api.telegram.org/bot6793762517:AAENCEGW35Gi0hD3JV6w_Rpjbr-4fCpYwmE/sendMessage' \
             --header 'Content-Type: application/json' \
-            --data '{"chat_id": "${{secrets.TEST_TELEGRAM_CHAT_ID}}", "text": "Тест прошел" }'
+            --data '{"chat_id": "-1001690041599", "text": "test completed}'
