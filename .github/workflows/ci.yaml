@@ -37,7 +37,6 @@ jobs:
         env:
           ENV_FILE: ${{ secrets.ENV_FILE }}
         run: |
-          mkdir .env
           echo "$ENV_FILE" > .env
       - run: npm run test
       - name: Setup Pages
