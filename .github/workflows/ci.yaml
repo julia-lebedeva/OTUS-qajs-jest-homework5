@@ -33,6 +33,12 @@ jobs:
           node-version: 20.11.0
           cache: 'npm'
       - run: npm ci
+      - name: Get secrets from environment
+        env:
+          ENV_FILE: ${{ secrets.ENV_FILE }}
+        run: |
+          mkdir .env
+          echo "$ENV_FILE" > .env
       - run: npm run test
       - name: Setup Pages
         uses: actions/configure-pages@v4
@@ -59,4 +65,4 @@ jobs:
           curl --request POST \
             --location 'https://api.telegram.org/bot{{secrets.TEST_TELEGRAM_TOKEN}}/sendMessage' \
             --header 'Content-Type: application/json' \
-            --data '{"chat_id": "{{secrets.TEST_TELEGRAM_CHAT_ID}}}", "text": "Report link: https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }}"}'
+            --data '{"chat_id": "{{secrets.TEST_TELEGRAM_CHAT_ID}}}", "text": "Report link: https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }}"}
